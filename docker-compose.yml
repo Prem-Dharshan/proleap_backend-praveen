@@ -1,0 +1,41 @@
+services:
+  web:
+    container_name: proleap-backend-web
+    build: .
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - proleap-pgsql
+        # condition: service_healthy
+
+    # environment:
+    #   - EMAIL_HOST=smtp.gmail.com
+    #   - EMAIL_PORT=587
+    #   - EMAIL_USE_TLS=True
+    #   - EMAIL_HOST_USER=proleap.pl@gmail.com
+    #   - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+    env_file:
+      - ./.env
+  proleap-pgsql:
+    container_name: proleap-pgsql
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+    volumes:
+      - pgdata:/var/lib/postgresql/data # For persistant storage
+
+  # test:
+  #     build: .
+  #     command: ["coverage", "run", "manage.py", "test"]
+  #     volumes:
+  #       - .:/app
+  #     depends_on:
+  #       - proleap-pgsql
+  #     env_file:
+  #       - ./.env
+
+volumes:
+  pgdata:
