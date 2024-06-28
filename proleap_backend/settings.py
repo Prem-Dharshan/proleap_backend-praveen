@@ -52,8 +52,8 @@ DEBUG = env.bool('DEBUG', default=False)
 TEMPLATE_DEBUG = DEBUG
 
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['proleap.in', 'ewhizard.works', '.vercal.app'])
-
+#ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['proleap.in', 'ewhizard.works', '.vercal.app'])
+ALLOWED_HOSTS = ['*']#env.list('ALLOWED_HOSTS', default=[,'proleap.in', 'ewhizard.works', '.vercal.app'])
 
 # Application definition
 
@@ -258,13 +258,13 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 year
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
