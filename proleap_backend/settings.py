@@ -122,7 +122,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER':  os.getenv('DB_USER'),
         'PASSWORD':  os.getenv('DB_PASSWORD'),
-        'HOST': 'proleap-pgsql',
+        'HOST': os.getenv('HOST'),
         'PORT': '5432',
     }
 }
