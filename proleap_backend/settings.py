@@ -125,6 +125,8 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgres://postgres:root@localhost:5432/postgres')
+
 
 
 # Password validation
