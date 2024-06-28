@@ -18,6 +18,7 @@ from pathlib import Path
 from django.conf import settings
 import environ
 from django.core.management.utils import get_random_secret_key
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,7 +126,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgres://postgres:root@localhost:5432/postgres')
+DATABASES['default'] = dj_database_url.config()
 
 
 
@@ -164,6 +165,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

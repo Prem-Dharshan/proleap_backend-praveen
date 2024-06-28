@@ -1,10 +1,23 @@
 {
-    "builds": [{
-        "src": "proleap_backend/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "30mb", "runtime": "python3.12" }
-    }],
+    "builds": [
+        {
+            "src": "proleap_backend/wsgi.py",
+            "use": "@vercel/python",
+            "config": { "maxLambdaSize": "30mb", "runtime": "python3.12" }
+        },
+        {
+            "src": "build.sh",
+            "use": "@vercel/python",
+            "config": {
+                "distDir": "staticfiles_build"
+            }
+        }
+    ],
     "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
         {
             "src": "/(.*)",
             "dest": "proleap_backend/wsgi.py"
